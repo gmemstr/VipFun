@@ -20,7 +20,7 @@ public class VipLounge implements CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		Player player = (Player) sender;
 		
-		if(!player.hasPermission("vipfun.vip")){
+		if(!player.hasPermission("vipfun.lounge")){
 			player.sendMessage(ChatColor.RED + "Sorry, you're not VIP! Use /buy to buy it!");
 		}
 		
