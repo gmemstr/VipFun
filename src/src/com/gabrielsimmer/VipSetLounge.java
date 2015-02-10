@@ -21,7 +21,7 @@ public class VipSetLounge implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		Player player = (Player) sender;
 		
-		if(!player.hasPermission("vipfun.setlounge")){
+		if(!player.hasPermission("vipfun.admin")){
 			player.sendMessage(ChatColor.RED + "You don't have permission to do this!");
 		}
 		
