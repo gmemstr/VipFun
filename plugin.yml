@@ -1,0 +1,14 @@
+name: VipFun
+main: com.gabrielsimmer.vipfun.Main
+version: 1.4
+commands:
+   vipfun:
+      description: Replies with help for VipFun plugin.
+   vipwand:
+      description: Gives you a VIP Magic Wand!
+   viplounge:
+      description: Teleports you to the VIP lounge!
+   viprun:
+      description: Gives you a small speed boost!
+   vipsetlounge:
+      description: Allows admin to set VIP lounge location.
