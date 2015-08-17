@@ -1,19 +1,3 @@
-/*
- * This java file is the main java file that has:
- * a) The help text
- * b) Senders to java files with command info stuff
- * c) Todolist
- * d) Comments
- * 
- * 
- * The entire thing it pretty straightforward.
- * 
- * Todo:
- * Right-clicking VIP Magic Wand fires particle stream
- * 
- * vipfun.vip is the permission for PEX/whatever
- */
-
 package com.gabrielsimmer.vipfun;
 
 import org.bukkit.ChatColor;
@@ -31,6 +15,9 @@ public class Main extends JavaPlugin implements Listener{
 		this.getConfig().addDefault("viplounge.y", 120);
 		this.getConfig().addDefault("viplounge.z", 0);
 		this.getConfig().addDefault("viplounge.world", "world");
+		this.getConfig().addDefault("itemslot.wand", 0);
+		this.getConfig().addDefault("itemslot.run", 1);
+		this.getConfig().addDefault("itemslot.lounge", 2);
 
 		getConfig().options().copyDefaults(true);
 		saveConfig();
@@ -44,8 +31,8 @@ public class Main extends JavaPlugin implements Listener{
 		getCommand("viplounge").setExecutor(new VipLounge(this)); //For /viplounge command
 		getCommand("viprun").setExecutor(new VipRun(this)); //For /viprun command
 		getCommand("vipsetlounge").setExecutor(new VipSetLounge(this)); //For /vipsetlounge command		
-		getServer().getPluginManager().registerEvents(new ItemEffects(), this); //Right-click with VIP wand
-		getServer().getPluginManager().registerEvents(new GiveVipItems(), this); //Give VIP items like wand etc
+		getServer().getPluginManager().registerEvents(new ItemEffects(this), this); //Right-click with VIP wand
+		getServer().getPluginManager().registerEvents(new GiveVipItems(this), this); //Give VIP items like wand etc
 	}
 	@Override
 	public void onDisable(){

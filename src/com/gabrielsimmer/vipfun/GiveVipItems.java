@@ -15,6 +15,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class GiveVipItems implements Listener{
 	ChatColor gC = ChatColor.GOLD;
 
+	Main plugin;
+	
+	public GiveVipItems(Main passedPlugin){
+		this.plugin = passedPlugin;
+	}
+	
 	List<String> wandLore = Arrays.asList("Show off a bit!", ChatColor.BOLD + "Right click me");
 	List<String> runLore = Arrays.asList("Run around at superspeed!", ChatColor.BOLD + "Right click me");
 	List<String> loungeLore = Arrays.asList("Warp the the VIP Lounge", ChatColor.BOLD + "Right click me");
@@ -24,6 +30,7 @@ public class GiveVipItems implements Listener{
 		Player player = e.getPlayer();
 		
 		if (player.hasPermission("vipfun.vip")){
+			/* Note: DEBUG player.getInventory().clear(); */
 			// --- VIP WAND ITEM ---
 			ItemStack vipWandItem = new ItemStack(Material.BLAZE_ROD);
 			ItemMeta vipWandMeta = vipWandItem.getItemMeta(); //GET THE META
@@ -48,9 +55,13 @@ public class GiveVipItems implements Listener{
 			vipLoungeItem.setItemMeta(vipLoungeMeta);
 			// --- END ITEM ---
 			
-			player.getInventory().addItem(vipWandItem);
-			player.getInventory().addItem(vipRunItem);
-			player.getInventory().addItem(vipLoungeItem);
+			int wSlot = plugin.getConfig().getInt("itemslot.wand");
+			int rSlot = plugin.getConfig().getInt("itemslot.run");
+			int lSlot = plugin.getConfig().getInt("itemslot.lounge");
+			
+			player.getInventory().setItem(wSlot, vipWandItem);
+			player.getInventory().setItem(rSlot, vipRunItem);
+			player.getInventory().setItem(lSlot, vipLoungeItem);
 		}
 	}
 
